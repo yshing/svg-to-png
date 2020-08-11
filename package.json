@@ -9,6 +9,10 @@
     "jest": "^26.3.0",
     "neon-cli": "^0.4.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yshing/svg-to-png.git"
+  },
   "files": [
     "native/index.node",
     "lib"
@@ -16,7 +20,6 @@
   "scripts": {
     "build": "neon build",
     "build-release": "neon build --release",
-    "install": "node-pre-gyp install --fallback-to-build=false || neon build",
     "lint": "eslint .",
     "package": "node-pre-gyp package",
     "spec": "jest",
