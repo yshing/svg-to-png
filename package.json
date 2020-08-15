@@ -23,7 +23,7 @@
     "lint": "eslint .",
     "package": "node-pre-gyp package",
     "spec": "jest",
-    "test": "yarn build && yarn spec",
+    "test": "yarn build-release && yarn spec",
     "upload-binary": "yarn build-release && node-pre-gyp package && node-pre-gyp-github publish",
     "version": "yarn build-release"
   },
