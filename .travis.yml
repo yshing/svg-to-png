@@ -1,7 +1,8 @@
 os:
   - osx
   - linux
-language: node_js
+    dist: bionic
+language: rust
 node_js:
   - node
   - 12
