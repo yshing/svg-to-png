@@ -17,15 +17,28 @@ node_js:
   - 10
   - 8
 cache: cargo
+env: 
+  matrix:
+    - $TRAVIS_NODE_VERSION=node
 before_install:
-  # Install Rust and Cargo
-  # - curl https://sh.rustup.rs -sSf > /tmp/rustup.sh
-  # - sh /tmp/rustup.sh -y
-  # - export PATH="$HOME/.cargo/bin:$PATH"
-  # - source "$HOME/.cargo/env"
-  # Install NPM packages
+  # install node
+  - |
+    if [ "$TRAVIS_OS_NAME" == "windows" ]; then
+        export NVS_HOME=$ProgramData/nvs
+        git clone --single-branch https://github.com/jasongin/nvs $NVS_HOME
+        source $NVS_HOME/nvs.sh
+        nvs --version
+        nvs add $TRAVIS_NODE_VERSION && nvs use $TRAVIS_NODE_VERSION 
+    else
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+        nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION
+    fi
+  # Install global NPM packages
   - node -v
   - npm -v
+  - npm install -g yarn
+  - yarn global add yarn@latest
+  - yarn
   # - npm install
 script:
   - yarn test
