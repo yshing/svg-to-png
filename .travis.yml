@@ -13,6 +13,7 @@ jobs:
       dist: bionic
       node: 12
     - os: osx
+      osx_image: xcode11.2
     - os: windows
 language: rust
 rust: stable
