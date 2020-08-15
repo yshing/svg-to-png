@@ -13,6 +13,7 @@ impl<'a, W: std::io::Write + 'a> std::io::Write for WriterWrapper<'a, W> {
         self.w.flush()
     }
 }
+
 #[derive(Serialize, Deserialize, Debug)]
 struct FitOption {
     width: Option<u32>,
@@ -24,7 +25,7 @@ fn render_svg(mut cx: FunctionContext) -> JsResult<JsBuffer> {
     let svg_string = cx.argument::<JsString>(0)?.value();
     let svg_tree = match usvg::Tree::from_str(&svg_string, &usvg::Options::default()) {
         Ok(tree) => tree,
-        Err(_) => panic!("Failed to parse svg string"),
+        Err(e) => panic!(format!("{}", e)),
     };
     let mut fit = usvg::FitTo::Original;
     match cx.argument_opt(1) {
