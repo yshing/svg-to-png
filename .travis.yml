@@ -1,7 +1,15 @@
-os:
-  - osx
-  - linux
-    dist: bionic
+# os:
+#   - osx
+#   - linux
+jobs:
+  include:
+    - os: linux
+      dist: bionic
+    - os: linux
+      dist: bionic
+      rust: nightly
+    - os: osx
+    - os: windows
 language: rust
 node_js:
   - node
@@ -11,13 +19,14 @@ node_js:
 cache: cargo
 before_install:
   # Install Rust and Cargo
-  - curl https://sh.rustup.rs -sSf > /tmp/rustup.sh
-  - sh /tmp/rustup.sh -y
-  - export PATH="$HOME/.cargo/bin:$PATH"
-  - source "$HOME/.cargo/env"
+  # - curl https://sh.rustup.rs -sSf > /tmp/rustup.sh
+  # - sh /tmp/rustup.sh -y
+  # - export PATH="$HOME/.cargo/bin:$PATH"
+  # - source "$HOME/.cargo/env"
   # Install NPM packages
-  # - node -v
-  # - npm -v
+  - node -v
+  - npm -v
+  - 
   # - npm install
 script:
   - yarn test
