@@ -1,6 +1,9 @@
 # os:
 #   - osx
 #   - linux
+node:
+  - 14
+  - 12
 jobs:
   include:
     - os: linux
@@ -26,6 +29,7 @@ before_install:
         source $NVS_HOME/nvs.sh
         nvs --version
         nvs add $TRAVIS_NODE_VERSION && nvs use $TRAVIS_NODE_VERSION 
+        rustup default stable-x86_64-pc-windows-msvc
     else
         curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
         nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION
