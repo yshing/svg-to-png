@@ -6,7 +6,7 @@
   "author": "Y.Shing <y.shing@me.com>",
   "license": "MIT",
   "devDependencies": {
-    "jest": "^26.3.0",
+    "jest": "^25.0.0",
     "neon-cli": "^0.4.0"
   },
   "repository": {
