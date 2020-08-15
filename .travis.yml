@@ -26,7 +26,6 @@ before_install:
   # Install NPM packages
   - node -v
   - npm -v
-  - 
   # - npm install
 script:
   - yarn test
