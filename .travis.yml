@@ -5,17 +5,14 @@ jobs:
   include:
     - os: linux
       dist: bionic
+      node: 14
     - os: linux
       dist: bionic
-      rust: nightly
+      node: 12
     - os: osx
     - os: windows
 language: rust
-node_js:
-  - node
-  - 12
-  - 10
-  - 8
+rust: stable
 cache: cargo
 env: 
   matrix:
